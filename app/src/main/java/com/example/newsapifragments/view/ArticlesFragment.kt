@@ -1,6 +1,7 @@
 package com.example.newsapifragments.view
 
 
+import android.net.Uri
 import android.os.Bundle
 import android.provider.SyncStateContract
 import android.util.Log
@@ -8,6 +9,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.newsapifragments.R
@@ -42,7 +45,16 @@ class ArticlesFragment : Fragment(),ViewInterface {
     }
 
     override fun displayNewsInfo(results: Results) {
-        val adapter: NewsAdapter = NewsAdapter(results)
+        val adapter: NewsAdapter = NewsAdapter(results,object: onArticleClickListener{
+            override fun onArticleClicked(articles: Articles) {
+                Toast.makeText(context,"clicked",Toast.LENGTH_SHORT).show()
+                val builder = CustomTabsIntent.Builder()
+                val customTabsIntent = builder.build()
+                customTabsIntent.launchUrl(context, Uri.parse(articles.url))
+
+            }
+
+        })
         recyclerview.layoutManager = LinearLayoutManager(context)
         recyclerview.adapter = adapter
 
