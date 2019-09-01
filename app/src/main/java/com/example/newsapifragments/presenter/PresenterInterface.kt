@@ -4,7 +4,8 @@ import com.example.newsapifragments.model.Results
 
 interface PresenterInterface {
 
-    fun getTitle(result:Results)
-    fun getDescription()
-    fun getUrl()
+    fun getNewsdetails()
+//    fun getTitle(result:Results)
+//    fun getDescription()
+//    fun getUrl()
 }
