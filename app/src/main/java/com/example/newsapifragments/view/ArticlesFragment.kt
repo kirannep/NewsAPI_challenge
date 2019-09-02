@@ -47,7 +47,7 @@ class ArticlesFragment : Fragment(),ViewInterface {
     override fun displayNewsInfo(results: Results) {
         val adapter: NewsAdapter = NewsAdapter(results,object: onArticleClickListener{
             override fun onArticleClicked(articles: Articles) {
-                Toast.makeText(context,"clicked",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"loading",Toast.LENGTH_SHORT).show()
                 val builder = CustomTabsIntent.Builder()
                 val customTabsIntent = builder.build()
                 customTabsIntent.launchUrl(context, Uri.parse(articles.url))
@@ -57,8 +57,6 @@ class ArticlesFragment : Fragment(),ViewInterface {
         })
         recyclerview.layoutManager = LinearLayoutManager(context)
         recyclerview.adapter = adapter
-
     }
-
 
 }
