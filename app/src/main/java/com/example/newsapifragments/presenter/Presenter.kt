@@ -17,9 +17,6 @@ import retrofit2.Response
 class Presenter(_view:ViewInterface) : PresenterInterface {
 
     val view:ViewInterface = _view
-    val result: Results? = null
-    val source: Source? = null
-    val articlemodel:Articles? = null
 
     override fun getNewsdetails() {
 
